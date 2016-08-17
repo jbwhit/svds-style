@@ -71,11 +71,27 @@ fi
 You just placed a `custom.css` file in your `~/.jupyter/custom` directory. This makes all of your notebooks follow the SVDS style -- but you haven't finished yet! 
 
 
-svdsnb () {
-    # Usage: svdsnb [exploratory_data_analysis]
+
+```bash
+
+export dsinitials='jbw'
+
+svds-nb () {
+    # Usage: svds-nb [exploratory_data_analysis]
     # Will download the most up-to-date Template notebook named with:
     # today's date, your initials, and [an optional phrase].
     # The example would yield a file named: 
     # 2016-08-17_jbw_exploratory_data_analysis.ipynb
-    curl -H 'Authorization: token e619d2e19d93aaa8f6f30b7b6e2b4581fa6a0ed0' -H 'Accept: application/vnd.github.v3.raw' -L https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/Template-Python.ipynb -o `date +%Y-%m-%d`_jbw_$1.ipynb
+    curl -H 'Accept: application/vnd.github.v3.raw' -L https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/Template-Python.ipynb -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
+}
+
+svds-minimalnb () {
+    # Usage: svds-minimalnb [exploratory_data_analysis]
+    # Will download the most up-to-date Template notebook named with:
+    # today's date, your initials, and [an optional phrase].
+    # The example would yield a file named: 
+    # 2016-08-17_jbw_exploratory_data_analysis.ipynb
+    curl -H 'Accept: application/vnd.github.v3.raw' -L https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/minimal-python.ipynb -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
 } 
+```
+
