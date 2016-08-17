@@ -80,10 +80,9 @@ Add the following snippet to your `.bashrc` file (making the initial change)
 export dsinitials='jbw'
 
 # add to bashrc aliases
-alias envpy2="source activate py2"
-alias envpy3="source activate py3"
-alias sd="source deactivate"
-alias nb="jupyter notebook"
+alias svds-activate-py2="source activate py2"
+alias svds-activate-py3="source activate py3"
+alias svds-deactivate="source deactivate"
 
 svds-nb () {
     # Usage: svds-nb [exploratory_data_analysis]
@@ -106,5 +105,22 @@ svds-minimalnb () {
     https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/minimal-python.ipynb \
     -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
 } 
+
+svds-create-directories () {
+    # Create directory structure in current working directory
+    directories='report
+    develop
+    data
+    source'
+
+    for dir_name in ${directories}
+    do
+      mkdir $dir_name
+      touch $dir_name/README.md
+      if [ $dir_name = "source" ]; then
+        mkdir -p $dir_name/sql
+      fi
+    done
+}
 ```
 
