@@ -1,7 +1,10 @@
 # svds-style
 
+This is a work in progress, if you feel that you have a better way of doing any of the below, please feel free to create a pull-request. 
+
 ## Setting up your laptop for Jupyter
 
+Get miniconda.
 
 ```bash
 
@@ -16,6 +19,8 @@ source ~/.bashrc
 
 conda update conda -y
 ```
+
+Set up your environments (below are a reasonable list of packages to start with):
 
 ```bash
 
@@ -33,18 +38,14 @@ pandas
 scikit-learn
 scipy
 numpy
-statsmodels'
+statsmodels
+tqdm'
 
-conda create --name py3 python=3 $packages
 conda create --name py2 python=2 $packages
+conda create --name py3 python=3 $packages
 
-pip install mplsvds
-
-# add to bashrc aliases
-alias envpy2="source activate py2"
-alias envpy3="source activate py3"
-alias sd="source deactivate"
-alias nb="jupyter notebook"
+# Install the matplotlib style library
+pip install --upgrade mplsvds
 
 ```
 
@@ -68,13 +69,21 @@ fi
 
 ## What have you just done?
 
-You just placed a `custom.css` file in your `~/.jupyter/custom` directory. This makes all of your notebooks follow the SVDS style -- but you haven't finished yet! 
+You just placed a `custom.css` file in your `~/.jupyter/custom` directory. This makes all of your notebooks follow the SVDS style -- but you aren't finished yet! 
 
-
+Add the following snippet to your `.bashrc` file (making the initial change)
 
 ```bash
-
+# Change this!
+# Change this!
+# Change this to be your initials!
 export dsinitials='jbw'
+
+# add to bashrc aliases
+alias envpy2="source activate py2"
+alias envpy3="source activate py3"
+alias sd="source deactivate"
+alias nb="jupyter notebook"
 
 svds-nb () {
     # Usage: svds-nb [exploratory_data_analysis]
@@ -82,7 +91,9 @@ svds-nb () {
     # today's date, your initials, and [an optional phrase].
     # The example would yield a file named: 
     # 2016-08-17_jbw_exploratory_data_analysis.ipynb
-    curl -H 'Accept: application/vnd.github.v3.raw' -L https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/Template-Python.ipynb -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
+    curl -H 'Accept: application/vnd.github.v3.raw' -L \
+    https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/Template-Python.ipynb \
+    -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
 }
 
 svds-minimalnb () {
@@ -91,7 +102,9 @@ svds-minimalnb () {
     # today's date, your initials, and [an optional phrase].
     # The example would yield a file named: 
     # 2016-08-17_jbw_exploratory_data_analysis.ipynb
-    curl -H 'Accept: application/vnd.github.v3.raw' -L https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/minimal-python.ipynb -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
+    curl -H 'Accept: application/vnd.github.v3.raw' -L \
+    https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/minimal-python.ipynb \
+    -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
 } 
 ```
 
