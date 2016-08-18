@@ -84,8 +84,8 @@ alias svds-activate-py2="source activate py2"
 alias svds-activate-py3="source activate py3"
 alias svds-deactivate="source deactivate"
 
-svds-nb () {
-    # Usage: svds-nb [exploratory_data_analysis]
+svds-templatenb () {
+    # Usage: svds-templatenb [exploratory_data_analysis]
     # Will download the most up-to-date Template notebook named with:
     # today's date, your initials, and [an optional phrase].
     # The example would yield a file named: 
@@ -106,7 +106,7 @@ svds-minimalnb () {
     -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
 } 
 
-svds-create-directories () {
+svds-create-project () {
     # Create directory structure in current working directory
     directories='report
     develop
