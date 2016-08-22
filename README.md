@@ -52,8 +52,8 @@ pip install --upgrade mplsvds
 ## Setting up your laptop for SVDS style
 
 ```bash
+# cd to wherever you put your github repos
 git clone git@github.com:jbwhit/svds-style.git
-cd svds-style
 
 # source activate whatever jupyter environment you use for svds
 
