@@ -124,3 +124,8 @@ svds-create-project () {
 }
 ```
 
+## Why do we do dates this way?
+
+![XKCD image](http://imgs.xkcd.com/comics/iso_8601.png)
+
+
