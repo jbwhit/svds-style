@@ -29,10 +29,12 @@ conda config --add channels conda-forge
 packages='jupyter
 notebook
 ipywidgets
+jupyter_contrib_nbextensions
 jupyter_nbextensions_configurator
 pyparsing
 matplotlib
 seaborn
+pip
 mpld3
 pandas
 scikit-learn
@@ -60,7 +62,7 @@ git clone git@github.com:jbwhit/svds-style.git
 jupyter notebook --generate-config
 mkdir -p ~/.jupyter/custom
 
-if [ -f ~/.jupyter/custom/custom.css ]; then
+if [ -e ~/.jupyter/custom/custom.css ]; then
     mv ~/.jupyter/custom/custom.css ~/.jupyter/custom/custom.css.`date +%Y-%m-%d`
 else
     ln -s ${PWD}/css/jupyter/custom.css ~/.jupyter/custom/custom.css
@@ -108,7 +110,8 @@ svds-minimalnb () {
 
 svds-create-project () {
     # Create directory structure in current working directory
-    directories='report
+    directories='docs
+    report
     develop
     data
     source'
