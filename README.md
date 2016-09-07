@@ -33,9 +33,10 @@ jupyter_contrib_nbextensions
 jupyter_nbextensions_configurator
 pyparsing
 matplotlib
+mkl
+mpld3
 seaborn
 pip
-mpld3
 pandas
 scikit-learn
 scipy
