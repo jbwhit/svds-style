@@ -16,15 +16,16 @@ bash Miniconda3-latest-MacOSX-x86_64.sh
 
 #Update your .bashrc
 source ~/.bashrc
-
-conda update conda -y
 ```
 
 Set up your environments (below are a reasonable list of packages to start with):
 
 ```bash
 
-conda config --add channels conda-forge
+conda update conda
+
+# This adds the conda-forge channel below the defaults library
+conda config --append channels conda-forge
 
 packages='jupyter
 notebook
@@ -45,7 +46,7 @@ statsmodels
 tqdm'
 
 conda create --name py2 python=2 $packages
-conda create --name py3 python=3 $packages
+conda create --name py3 --channel r r r-irkernel r-recommended r-essentials rpy2 python=3 $packages -y
 
 # Install the matplotlib style library
 pip install --upgrade mplsvds
@@ -56,10 +57,9 @@ pip install --upgrade mplsvds
 
 ```bash
 # cd to wherever you put your github repos
-git clone git@github.com:jbwhit/svds-style.git
+git clone https://github.com/jbwhit/svds-style.git
 
 # source activate whatever jupyter environment you use for svds
-
 jupyter notebook --generate-config
 mkdir -p ~/.jupyter/custom
 
@@ -128,7 +128,7 @@ svds-create-project () {
 }
 ```
 
-## Why do we do dates this way?
+## Why do we write dates this way?
 
 ![XKCD image](http://imgs.xkcd.com/comics/iso_8601.png)
 
