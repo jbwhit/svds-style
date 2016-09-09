@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/jbwhit/svds-style.svg?branch=master)](https://travis-ci.org/jbwhit/svds-style)
+
 # svds-style
 
 This is a work in progress, if you feel that you have a better way of doing any of the below, please feel free to create a pull-request. 
