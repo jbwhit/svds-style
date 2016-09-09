@@ -1,0 +1,13 @@
+language: bash
+
+os:
+  - osx
+
+before_install:
+  - brew update
+
+script:
+  - bash setup.bash
+  - cd setup
+  - brew update
+  - brew bundle
