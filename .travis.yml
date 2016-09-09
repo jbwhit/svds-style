@@ -9,5 +9,5 @@ before_install:
 script:
   - bash setup.bash
   - cd setup
-  - brew update
   - brew bundle
+  - bash python-setup.bash
