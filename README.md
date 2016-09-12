@@ -4,63 +4,59 @@
 
 This is a work in progress, if you feel that you have a better way of doing any of the below, please feel free to create a pull-request. 
 
-## Setting up your laptop for Jupyter
+This is meant to take a laptop from factory settings into something usable (or at least far along that path). 
 
-Get miniconda.
+```bash
+git clone https://github.com/jbwhit/svds-style.git
+```
 
 ```bash
 
-cd ~/Downloads
-wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh
-bash Miniconda3-latest-MacOSX-x86_64.sh
-
-# Lots of license agreements to read and agree to
-
-#Update your .bashrc
-source ~/.bashrc
+cd setup
+bash 01-initial-setup.bash
+bash 02-brew.bash
+bash 03-python-setup.bash
 ```
 
-Set up your environments (below are a reasonable list of packages to start with):
 
-```bash
+## Your laptop will now have
 
-conda update conda
+ - brew installed
+ - conda installed w/ reasonable starting packages
+ - svds-style installed (automatically make Jupyter Notebooks have SVDS templating)
+ - mplsvds installed (plots will use SVDS colors)
+ - one-command functions to create minimal or template notebooks that query most up-to-date versions automatically
+ - Extra command line tools 
+     + pandoc
+     + tmux
+     + wget
+     + grep
+ - Applications (that you don't have to install separately from internet)
+     + iTerm2
+     + Sublime Text
+     + Google Chrome
+     + caffeine
+     + flux
+     + SourceTree
+     + VLC
 
-# This adds the conda-forge channel below the defaults library
-conda config --append channels conda-forge
+## Next 
 
-packages='jupyter
-notebook
-ipywidgets
-jupyter_contrib_nbextensions
-jupyter_nbextensions_configurator
-pyparsing
-matplotlib
-mkl
-mpld3
-seaborn
-pip
-pandas
-scikit-learn
-scipy
-numpy
-statsmodels
-tqdm'
-
-conda create --name py2 python=2 $packages
-conda create --name py3 --channel r r r-irkernel r-recommended r-essentials rpy2 python=3 $packages -y
-
-# Install the matplotlib style library
-pip install --upgrade mplsvds
+Set up your `~/.ssh/config` file. This is a good start: http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/
 
 ```
+mkdir -p $HOME/.ssh
+chmod 0700 $HOME/.ssh
+```
+
+Have a new key-pair for each new client laptop.
+
+Learn tmux http://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
+http://www.starkandwayne.com/blog/iterm-and-tmux-sitting-in-a-tree/
 
 ## Setting up your laptop for SVDS style
 
 ```bash
-# cd to wherever you put your github repos
-git clone https://github.com/jbwhit/svds-style.git
-
 # source activate whatever jupyter environment you use for svds
 jupyter notebook --generate-config
 mkdir -p ~/.jupyter/custom
@@ -128,10 +124,57 @@ svds-create-project () {
       fi
     done
 }
+
+alias svds-activate-py2="source activate py2"
+alias svds-activate-py3="source activate py3"
+alias svds-deactivate="source deactivate"
+
+
+
+
 ```
 
 ## Why do we write dates this way?
 
 ![XKCD image](http://imgs.xkcd.com/comics/iso_8601.png)
+
+
+## Incredibly useful additions to bashrc
+
+Add the following to your `.bashrc` -- you have to run the commented commands first (but leave the comments in for future reference). These additions put the current git branch in your terminal, and allow for tab-completion of git commands. 
+
+```bash
+# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
+
+if [ -f ~/.git-completion.bash ]; then
+  . ~/.git-completion.bash
+fi
+
+# mkdir ~/.bash
+# cd ~/.bash
+# git clone git://github.com/jimeh/git-aware-prompt.git
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+
+```
+
+## Decommissioning 
+
+First make sure that everything that needs to be backed up at the client is backed up and delivered. Get an OK from your SA that you are going to wipe your laptop. 
+
+ - Delete .ssh/
+ - Remove installed applications
+     + Slack (shouldn't be there anyway)
+     + Evernote (shouldn't be there anyway)
+     + Dropbox
+     + Chrome
+         * de-link account
+         * clear browsing data from the beginning of time
+     + Documents
+     + Downloads
+     + project folder
+     + miniconda
+ - Empty trash
+
 
 

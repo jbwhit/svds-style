@@ -39,7 +39,7 @@ numpy
 statsmodels
 tqdm'
 
-conda create -q --name py2 python=2 $packages
+conda create -q --name py2 --channel r r r-irkernel r-recommended r-essentials rpy2 python=2 $packages
 # Including r
 conda create -q --name py3 --channel r r r-irkernel r-recommended r-essentials rpy2 python=3 $packages -y
 
