@@ -10,4 +10,4 @@ script:
   - bash setup.bash
   - cd setup
   - brew bundle
-  - bash python-setup.bash
+  - bash 03-python-setup.bash
