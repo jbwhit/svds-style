@@ -9,6 +9,10 @@ tap 'homebrew/dupes'
 tap 'caskroom/versions'
 tap 'homebrew/versions'
 
+# This installs helper functions.
+tap 'jbwhit/tap'
+brew 'nb3automation'
+
 brew 'bash'
 brew 'bash-completion2'
 brew 'awscli'

@@ -8,13 +8,15 @@ This is meant to take a laptop from factory settings into something usable (or a
 
 ```bash
 git clone https://github.com/jbwhit/svds-style.git
-```
+cd svds-style/setup
 
-```bash
-
-cd setup
+# hit "install" when prompted
 bash 01-initial-setup.bash
+
+# This takes a while, unless it returns an error, wait.
 bash 02-brew.bash
+
+# This takes a while, unless it returns an error, wait. 
 bash 03-python-setup.bash
 ```
 
@@ -85,51 +87,7 @@ alias svds-activate-py2="source activate py2"
 alias svds-activate-py3="source activate py3"
 alias svds-deactivate="source deactivate"
 
-svds-templatenb () {
-    # Usage: svds-templatenb [exploratory_data_analysis]
-    # Will download the most up-to-date Template notebook named with:
-    # today's date, your initials, and [an optional phrase].
-    # The example would yield a file named: 
-    # 2016-08-17_jbw_exploratory_data_analysis.ipynb
-    curl -H 'Accept: application/vnd.github.v3.raw' -L \
-    https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/Template-Python.ipynb \
-    -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
-}
-
-svds-minimalnb () {
-    # Usage: svds-minimalnb [exploratory_data_analysis]
-    # Will download the most up-to-date Template notebook named with:
-    # today's date, your initials, and [an optional phrase].
-    # The example would yield a file named: 
-    # 2016-08-17_jbw_exploratory_data_analysis.ipynb
-    curl -H 'Accept: application/vnd.github.v3.raw' -L \
-    https://api.github.com/repos/jbwhit/svds-style/contents/notebooks/minimal-python.ipynb \
-    -o `date +%Y-%m-%d`_${dsinitials}_$1.ipynb
-} 
-
-svds-create-project () {
-    # Create directory structure in current working directory
-    directories='docs
-    report
-    develop
-    data
-    source'
-
-    for dir_name in ${directories}
-    do
-      mkdir $dir_name
-      touch $dir_name/README.md
-      if [ $dir_name = "source" ]; then
-        mkdir -p $dir_name/sql
-      fi
-    done
-}
-
-alias svds-activate-py2="source activate py2"
-alias svds-activate-py3="source activate py3"
-alias svds-deactivate="source deactivate"
-
-
+```
 
 
 ```
@@ -138,17 +96,18 @@ alias svds-deactivate="source deactivate"
 
 ![XKCD image](http://imgs.xkcd.com/comics/iso_8601.png)
 
+## Misc
+
+### Git
+
+ - add `.ipynb_checkpoints` to gitignore
+ - http://nuclearsquid.com/writings/git-tricks-tips-workflows/
 
 ## Incredibly useful additions to bashrc
 
 Add the following to your `.bashrc` -- you have to run the commented commands first (but leave the comments in for future reference). These additions put the current git branch in your terminal, and allow for tab-completion of git commands. 
 
 ```bash
-# curl https://raw.githubusercontent.com/git/git/master/contrib/completion/git-completion.bash -o ~/.git-completion.bash
-
-if [ -f ~/.git-completion.bash ]; then
-  . ~/.git-completion.bash
-fi
 
 # mkdir ~/.bash
 # cd ~/.bash

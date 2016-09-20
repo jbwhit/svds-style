@@ -40,7 +40,7 @@ statsmodels
 tqdm'
 
 conda create -q --name py2 python=2 $packages
-# Including r in py3 because conda install r and py2 don't work.
+# Only including r in py3 because conda install r and py2 don't work.
 # If you need it, force
 conda create -q --name py3 --channel r r r-irkernel r-recommended r-essentials rpy2 python=3 $packages -y
 
