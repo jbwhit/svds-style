@@ -25,7 +25,6 @@ packages='jupyter
 notebook
 ipywidgets
 jupyter_contrib_nbextensions
-jupyter_nbextensions_configurator
 pyparsing
 matplotlib
 mkl
