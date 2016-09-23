@@ -10,7 +10,7 @@ This is meant to take a laptop from factory settings into something usable (or a
 git clone https://github.com/jbwhit/svds-style.git
 cd svds-style/setup
 
-# hit "install" when prompted
+# "install" when prompted
 bash 01-initial-setup.bash
 
 # This takes a while, unless it returns an error, wait.
@@ -89,9 +89,6 @@ alias svds-deactivate="source deactivate"
 
 ```
 
-
-```
-
 ## Why do we write dates this way?
 
 ![XKCD image](http://imgs.xkcd.com/comics/iso_8601.png)
@@ -108,6 +105,13 @@ alias svds-deactivate="source deactivate"
 Add the following to your `.bashrc` -- you have to run the commented commands first (but leave the comments in for future reference). These additions put the current git branch in your terminal, and allow for tab-completion of git commands. 
 
 ```bash
+
+export PS1="\n# \w\n# \[${Green}\]\h \[${Color_Off}\]\[${Cyan}\]\${git_branch}\[${Red}\]\$git_dirty\[${Color_Off}\]$ "
+
+# git completion (if you installed via the setup instructions above)
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
 
 # mkdir ~/.bash
 # cd ~/.bash
@@ -132,7 +136,7 @@ First make sure that everything that needs to be backed up at the client is back
      + Documents
      + Downloads
      + project folder
-     + miniconda
+     + ~/miniconda*
  - Empty trash
 
 
