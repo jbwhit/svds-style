@@ -66,13 +66,8 @@ brew 'watch'
 brew 'wdiff', args: ['with-gettext']
 brew 'wget', args: ['with-iri']
 
-cask 'adobe-reader'
 cask 'iterm2'
 cask 'sublime-text'
-cask 'google-chrome'
 cask 'caffeine'
 cask 'flux'
 cask 'sourcetree'
-cask 'vlc'
-cask 'spotify'
-cask 'slack'

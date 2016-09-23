@@ -8,6 +8,8 @@ before_install:
 
 script:
   - bash setup.bash
-  - cd setup
+  - cd client-setup
   - brew bundle
   - bash 03-python-setup.bash
+  - cd ../svds-setup
+  - brew bundle

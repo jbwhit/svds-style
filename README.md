@@ -6,9 +6,11 @@ This is a work in progress, if you feel that you have a better way of doing any 
 
 This is meant to take a laptop from factory settings into something usable (or at least far along that path). 
 
+For all setups, I recommend the following: 
+
 ```bash
 git clone https://github.com/jbwhit/svds-style.git
-cd svds-style/setup
+cd svds-style/client-setup
 
 # "install" when prompted
 bash 01-initial-setup.bash
@@ -20,6 +22,14 @@ bash 02-brew.bash
 bash 03-python-setup.bash
 ```
 
+If your computer is an SVDS/non-client laptop, also run (this installs further applications like Slack): 
+
+```bash
+
+cd ../svds-setup
+bash 02-brew.bash
+
+```
 
 ## Your laptop will now have
 
@@ -38,9 +48,8 @@ bash 03-python-setup.bash
      + Sublime Text
      + Google Chrome
      + caffeine
-     + flux
-     + SourceTree
-     + VLC
+     + flux 
+     + SourceTree (a git client)
 
 ## Next 
 
@@ -51,9 +60,9 @@ mkdir -p $HOME/.ssh
 chmod 0700 $HOME/.ssh
 ```
 
-Have a new key-pair for each new client laptop.
-
-Learn tmux http://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
+ - Have a new key-pair for each new client laptop.
+ - Update you github account w/ the new public key.
+ - Learn tmux http://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
 http://www.starkandwayne.com/blog/iterm-and-tmux-sitting-in-a-tree/
 
 ## Setting up your laptop for SVDS style
@@ -89,6 +98,29 @@ alias svds-deactivate="source deactivate"
 
 ```
 
+## Incredibly useful additions to bashrc
+
+Also, add the following to your `.bashrc` -- you have to run the commented commands first (but leave the comments in for future reference). These additions put the current git branch in your terminal, and allow for tab-completion of git commands. 
+
+```bash
+
+export PS1="\n# \w\n# \[${Green}\]\h \[${Color_Off}\]\[${Cyan}\]\${git_branch}\[${Red}\]\$git_dirty\[${Color_Off}\]$ "
+
+# git completion (if you installed via the setup instructions above)
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
+
+# You have to run this commented code first before this will work
+# mkdir ~/.bash
+# cd ~/.bash
+# git clone git://github.com/jimeh/git-aware-prompt.git
+export GITAWAREPROMPT=~/.bash/git-aware-prompt
+source $GITAWAREPROMPT/main.sh
+
+```
+
+
 ## Why do we write dates this way?
 
 ![XKCD image](http://imgs.xkcd.com/comics/iso_8601.png)
@@ -100,26 +132,6 @@ alias svds-deactivate="source deactivate"
  - add `.ipynb_checkpoints` to gitignore
  - http://nuclearsquid.com/writings/git-tricks-tips-workflows/
 
-## Incredibly useful additions to bashrc
-
-Add the following to your `.bashrc` -- you have to run the commented commands first (but leave the comments in for future reference). These additions put the current git branch in your terminal, and allow for tab-completion of git commands. 
-
-```bash
-
-export PS1="\n# \w\n# \[${Green}\]\h \[${Color_Off}\]\[${Cyan}\]\${git_branch}\[${Red}\]\$git_dirty\[${Color_Off}\]$ "
-
-# git completion (if you installed via the setup instructions above)
-if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
-    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
-fi
-
-# mkdir ~/.bash
-# cd ~/.bash
-# git clone git://github.com/jimeh/git-aware-prompt.git
-export GITAWAREPROMPT=~/.bash/git-aware-prompt
-source $GITAWAREPROMPT/main.sh
-
-```
 
 ## Decommissioning 
 
