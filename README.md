@@ -10,7 +10,7 @@ For all setups, I recommend the following:
 
 ```bash
 git clone https://github.com/jbwhit/svds-style.git
-cd svds-style/client-setup
+cd svds-style/setup-minimal
 
 # "install" when prompted
 bash 01-initial-setup.bash
@@ -51,6 +51,11 @@ bash 02-brew.bash
      + flux 
      + SourceTree (a git client)
 
+## Why use iTerm2?
+
+ - Demo
+     + 
+
 ## Next 
 
 Set up your `~/.ssh/config` file. This is a good start: http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/
@@ -61,7 +66,7 @@ chmod 0700 $HOME/.ssh
 ```
 
  - Have a new key-pair for each new client laptop.
- - Update you github account w/ the new public key.
+ - [Update your github account](https://github.com/settings/keys) w/ the new public key.
  - Learn tmux http://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
 http://www.starkandwayne.com/blog/iterm-and-tmux-sitting-in-a-tree/
 
