@@ -54,7 +54,6 @@ bash 02-brew.bash
 ## Why use iTerm2?
 
  - Demo
-     + 
 
 ## Next 
 
@@ -63,6 +62,15 @@ Set up your `~/.ssh/config` file. This is a good start: http://nerderati.com/201
 ```
 mkdir -p $HOME/.ssh
 chmod 0700 $HOME/.ssh
+```
+
+Example: 
+
+```bash
+Host supercomputer
+    HostName address.ip.numbers
+    User username
+    IdentityFile ~/.ssh/id_rsa
 ```
 
  - Have a new key-pair for each new client laptop.
@@ -137,9 +145,6 @@ function path(){
     printf "%s\n" $PATH
     IFS=$old
 }
-
-
-
 
 # git completion (if you installed via the setup instructions above)
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
