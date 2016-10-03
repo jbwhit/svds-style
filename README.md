@@ -111,10 +111,53 @@ Also, add the following to your `.bashrc` -- you have to run the commented comma
 
 export PS1="\n# \w\n# \[${Green}\]\h \[${Color_Off}\]\[${Cyan}\]\${git_branch}\[${Red}\]\$git_dirty\[${Color_Off}\]$ "
 
+
+# This can go in .inputrc (w/o the bind "")
+bind "set completion-ignore-case on"
+bind "set bell-style none"
+
+
+#    eg. save mc
+#    cd mc # no '$' is necessary
+if [ ! -f ~/.dirs ]; then  # if doesn't exist, create it
+    touch ~/.dirs
+fi
+
+alias show='cat ~/.dirs'
+save (){
+    command sed "/!$/d" ~/.dirs > ~/.dirs1; \mv ~/.dirs1 ~/.dirs; echo "$@"=\"`pwd`\" >> ~/.dirs; source ~/.dirs ;
+    source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
+}
+source ~/.dirs  # Initialization for the above 'save' facility: source the .sdirs file
+shopt -s cdable_vars # set the bash option so that no '$' is required when using the above facility
+
+function path(){
+    old=$IFS
+    IFS=:
+    printf "%s\n" $PATH
+    IFS=$old
+}
+
+
+
+
 # git completion (if you installed via the setup instructions above)
 if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
     . `brew --prefix`/etc/bash_completion.d/git-completion.bash
 fi
+
+
+if [ -f $(brew --prefix)/etc/bash_completion ]; then
+. $(brew --prefix)/etc/bash_completion
+fi
+
+# git
+if [ -f `brew --prefix`/etc/bash_completion.d/git-completion.bash ]; then
+    . `brew --prefix`/etc/bash_completion.d/git-completion.bash
+fi
+
+# setup here: https://www.iterm2.com/documentation-shell-integration.html
+source ~/.iterm2_shell_integration.`basename $SHELL`
 
 # You have to run this commented code first before this will work
 # mkdir ~/.bash
