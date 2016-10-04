@@ -2,73 +2,105 @@
 # $ brew tap Homebrew/bundle
 # $ brew bundle
 
+# This puts the applications in the correct folder
 cask_args appdir: '/Applications'
 
+# List of brew repositories
 tap 'homebrew/bundle'
 tap 'homebrew/dupes'
 tap 'caskroom/versions'
 tap 'homebrew/versions'
-
-# This installs helper functions.
 tap 'jbwhit/tap'
+
+# This installs the svds-helper functions
 brew 'nb3automation'
 
-brew 'bash'
-brew 'bash-completion2'
-brew 'awscli'
-brew 'binutils'
-brew 'cheat'
+# Use GNU instead of BSD commands
+# the with-default-names uses normal name, rather than
 brew 'coreutils'
-brew 'ctags'
+brew 'binutils'
 brew 'diffutils'
-brew 'file-formula'
 brew 'findutils', args: ['with-default-names']
 brew 'gawk'
-brew 'gcc'
-brew 'git'
-brew 'git-lfs'
-brew 'git-flow'
-brew 'git-extras'
-brew 'htop'
-brew 'hub'
 brew 'gnu-indent', args: ['with-default-names']
 brew 'gnu-sed', args: ['with-default-names']
 brew 'gnu-tar', args: ['with-default-names']
 brew 'gnu-which', args: ['with-default-names']
 brew 'gnutls', args: ['with-default-names']
-brew 'gpatch'
-brew 'gpg'
 brew 'grep', args: ['with-default-names']
 brew 'gzip'
+brew 'screen'
+brew 'watch'
+brew 'wdiff', args: ['with-gettext']
+brew 'wget', args: ['with-iri']
+
+# Update tools that already exist on Mac
+
+# Newest version of Bash 4.x
+brew 'bash'
+# Bash tab completion for Bash 4.x
+brew 'bash-completion2'
+# Better top command
+brew 'htop'
+
+# Git and some surrounds
+brew 'git'
+brew 'git-lfs'
+brew 'git-flow'
+brew 'git-extras'
+brew 'hub'
+
+
+
+# Amazon command line interface
+brew 'awscli'
+
+# Simple cheat-sheets; install and run $ cheat tar
+brew 'cheat'
+
+
+brew 'ctags'
+brew 'file-formula'
+brew 'gcc'
+brew 'gpatch'
+brew 'gpg'
 brew 'htop-osx'
 brew 'hub'
 brew 'jsonpp'
 brew 'lastpass-cli', args: ['with-pinentry']
 brew 'less'
-brew 'm4'
 brew 'make'
 brew 'most'
 brew 'openssh'
-brew 'pandoc'
-brew 'reattach-to-user-namespace'
-brew 'rename'
-brew 'rsync'
-brew 'screen'
 brew 'ssh-copy-id'
+brew 'rsync'
+
+brew 'pandoc'
+brew 'rename'
 brew 'svn'
 brew 'the_silver_searcher'
+# Using tmux
 brew 'tmux'
+# This apparently helps tmux work without problems.
+brew 'reattach-to-user-namespace'
+
+# Visualize directory structure
 brew 'tree'
+
 brew 'unrar'
 brew 'unzip'
 brew 'vim', args: ['override-system-vi']
-brew 'watch'
-brew 'wdiff', args: ['with-gettext']
-brew 'wget', args: ['with-iri']
 
+# These programs are applications
+# A better terminal
 cask 'iterm2'
-cask 'sublime-text'
-cask 'caffeine'
-cask 'flux'
-cask 'sourcetree'
+# Chrome browser
 cask 'google-chrome'
+# A reasonable text editor
+cask 'sublime-text'
+# Keeps your computer awake
+cask 'caffeine'
+# Changes the color of your screen to be redder in the evening
+cask 'flux'
+# Git gui
+cask 'sourcetree'
