@@ -55,16 +55,24 @@ bash 02-brew.bash
 
  - Demo
 
-## Next 
+## Next SSH setup
 
-Set up your `~/.ssh/config` file. This is a good start: http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/
+This is a good start: http://nerderati.com/2011/03/17/simplify-your-life-with-an-ssh-config-file/
+
+Begin with:
 
 ```
 mkdir -p $HOME/.ssh
 chmod 0700 $HOME/.ssh
 ```
 
-Example: 
+ - Create a new key-pair for each new client laptop (with passphrase).
+ - 
+ - [Update your github account](https://github.com/settings/keys) w/ the new public key.
+
+Set up your `~/.ssh/config` file (create it if it doesn't exist).
+
+And example config entry:
 
 ```bash
 Host supercomputer
@@ -73,10 +81,12 @@ Host supercomputer
     IdentityFile ~/.ssh/id_rsa
 ```
 
- - Have a new key-pair for each new client laptop.
- - [Update your github account](https://github.com/settings/keys) w/ the new public key.
+ - Send your public key to the computer you want access to with `ssh-copy-id`: like: `ssh-copy-id -i ~/.ssh/id_rsa.pub username@address.ip.numbers`
+
+
  - Learn tmux http://www.hamvocke.com/blog/a-quick-and-easy-guide-to-tmux/
 http://www.starkandwayne.com/blog/iterm-and-tmux-sitting-in-a-tree/
+
 
 ## Setting up your laptop for SVDS style
 
@@ -171,6 +181,30 @@ source ~/.iterm2_shell_integration.`basename $SHELL`
 export GITAWAREPROMPT=~/.bash/git-aware-prompt
 source $GITAWAREPROMPT/main.sh
 
+```
+
+Add the following so that an SSH agent runs and handles your key-passphrases.
+
+```bash
+    SSH_ENV="$HOME/.ssh/env"
+    function start_agent {
+        echo "Initialising new SSH agent..."
+        /usr/bin/ssh-agent | sed 's/^echo/#echo/' > "${SSH_ENV}"
+        echo succeeded
+        chmod 600 "${SSH_ENV}"
+        . "${SSH_ENV}" > /dev/null
+        /usr/bin/ssh-add;
+    }
+    # Source SSH settings, if applicable
+    if [ -f "${SSH_ENV}" ]; then
+        . "${SSH_ENV}" > /dev/null
+        #ps ${SSH_AGENT_PID} doesn't work under cywgin
+        ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+            start_agent;
+        }
+    else
+        start_agent;
+    fi
 ```
 
 
