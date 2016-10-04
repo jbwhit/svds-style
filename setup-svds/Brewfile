@@ -13,7 +13,12 @@ tap 'homebrew/versions'
 tap 'jbwhit/tap'
 brew 'nb3automation'
 
+# To print pdfs that have fonts that the
+# printer doesn't understand print from adobe reader
 cask 'adobe-reader'
+# Video app
 cask 'vlc'
+# Music app
 cask 'spotify'
+# Slack
 cask 'slack'
