@@ -64,7 +64,6 @@ brew 'file-formula'
 brew 'gcc'
 brew 'gpatch'
 brew 'gpg'
-brew 'htop-osx'
 brew 'hub'
 brew 'jsonpp'
 brew 'lastpass-cli', args: ['with-pinentry']

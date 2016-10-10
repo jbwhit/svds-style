@@ -53,7 +53,19 @@ bash 02-brew.bash
 
 ## Why use iTerm2?
 
- - Demo
+First, follow the directions to [include shell integration](https://www.iterm2.com/documentation-shell-integration.html). 
+
+Now you can do many cool things like: 
+
+ - Drag-drop local files to a host
+ - `scp` files from remote hosts with right click
+ - Alert when long-running command returns
+ - Undo window close if cmd+z within 5 seconds
+ - Can turn on timestamps
+
+Some recommended updates: 
+
+ - turn off the helpful windows for pasting text
 
 ## Next SSH setup
 
@@ -67,7 +79,6 @@ chmod 0700 $HOME/.ssh
 ```
 
  - Create a new key-pair for each new client laptop (with passphrase).
- - 
  - [Update your github account](https://github.com/settings/keys) w/ the new public key.
 
 Set up your `~/.ssh/config` file (create it if it doesn't exist).
