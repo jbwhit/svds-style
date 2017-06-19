@@ -18,7 +18,7 @@ bash 01-initial-setup.bash
 # This takes a while, unless it returns an error, wait.
 bash 02-brew.bash
 
-# This takes a while, unless it returns an error, wait. 
+# This takes a while, unless it returns an error, wait.
 bash 03-python-setup.bash
 ```
 

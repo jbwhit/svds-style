@@ -23,7 +23,10 @@ conda config --append channels conda-forge
 
 packages='jupyter
 notebook
+anaconda-client
+conda-build
 ipywidgets
+jupyterlab
 jupyter_contrib_nbextensions
 pyparsing
 matplotlib
@@ -38,15 +41,30 @@ numpy
 statsmodels
 tqdm'
 
+
+conda install anaconda-client conda-build
+conda env create qwpbqoiq/svdspy3
+source activate svdspy3
+
+
 conda create -q --name py2 python=2 $packages
 # Only including r in py3 because conda install r and py2 don't work.
 # If you need it, force
-conda create -q --name py3 --channel r r r-irkernel r-recommended r-essentials rpy2 python=3 $packages -y
 
-source activate py3
+conda create --name svdspy3 --channel r r r-irkernel r-recommended r-essentials rpy2 python=3 $packages -y
+
+source activate svdspy3
 # Install the matplotlib style library
+
+
 # https://github.com/ipython/ipython/issues/8873#issuecomment-146185652
-ipython kernel install --display-name py3 --name py3
+pip install --upgrade jupyterthemes
+pip install nbdime
+ipython kernel install --display-name svdspy3 --name svdspy3
+
+# conda env export -n <env-name> > environment.yml
+# conda env export -n svdspy3 > environment.yml
+# conda env upload svdspy3
 
 # Todo upgrade this if needed.
 pip install mplsvds
