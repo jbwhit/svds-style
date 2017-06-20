@@ -42,13 +42,8 @@ statsmodels
 tqdm'
 
 
-conda install anaconda-client conda-build
-conda env create qwpbqoiq/svdspy3
-source activate svdspy3
-
-
-conda create -q --name py2 python=2 $packages
-# Only including r in py3 because conda install r and py2 don't work.
+conda create -q --name svdspy2 python=2 $packages
+# Only including r in py3 because conda install r and svdspy2 don't work.
 # If you need it, force
 
 conda create --name svdspy3 --channel r r r-irkernel r-recommended r-essentials rpy2 python=3 $packages -y
@@ -70,10 +65,10 @@ ipython kernel install --display-name svdspy3 --name svdspy3
 pip install mplsvds
 source deactivate
 
-source activate py2
+source activate svdspy2
 # Install the matplotlib style library
 # https://github.com/ipython/ipython/issues/8873#issuecomment-146185652
-ipython kernel install --display-name py2 --name py2
+ipython kernel install --display-name svdspy2 --name svdspy2
 
 pip install mplsvds
 source deactivate

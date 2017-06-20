@@ -18,7 +18,7 @@ bash 01-initial-setup.bash
 # This takes a while, unless it returns an error, wait.
 bash 02-brew.bash
 
-# This takes a while, unless it returns an error, wait.
+# This also takes a while, unless it returns an error, wait.
 bash 03-python-setup.bash
 ```
 
@@ -34,7 +34,7 @@ bash 02-brew.bash
 ## Your laptop will now have
 
  - brew installed
- - conda installed w/ reasonable starting packages
+ - conda installed w/ reasonable starting packages in two environments: **svdspy2** and **svdspy3** 
  - svds-style installed (automatically make Jupyter Notebooks have SVDS templating)
  - mplsvds installed (plots will use SVDS colors)
  - one-command functions to create minimal or template notebooks that query most up-to-date versions automatically
@@ -99,10 +99,13 @@ Host supercomputer
 http://www.starkandwayne.com/blog/iterm-and-tmux-sitting-in-a-tree/
 
 
-## Setting up your laptop for SVDS style
+## Example for setting up your laptop for SVDS _style_
 
 ```bash
-# source activate whatever jupyter environment you use for svds
+# activate your environment
+# conda env list pick svdspy2/svdspy3
+source activate svdspy3 
+
 jupyter notebook --generate-config
 mkdir -p ~/.jupyter/custom
 
